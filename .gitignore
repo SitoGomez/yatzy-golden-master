@@ -1,0 +1,6 @@
+/build/
+/node_modules/
+*.log
+coverage/
+reports/
+src/__snapshots__/
