@@ -43,19 +43,7 @@ describe('Given a Yatzy game', () => {
     it('Then the score should be calculated correctly II', () => {
       const diceCombinations: Dice[] = [1, 2, 3, 4, 5, 6];
 
-      const test = (
-        diceOne: Dice,
-        diceTwo: Dice,
-        diceThree: Dice,
-        diceFour: Dice,
-        diceFive: Dice,
-      ) => {
-        const test = new Yatzy(diceOne, diceTwo, diceThree, diceFour, diceFive);
-
-        return test.fours();
-      };
-
-      expect(test).toVerifyAllCombinations(
+      expect(Yatzy.fours).toVerifyAllCombinations(
         diceCombinations,
         diceCombinations,
         diceCombinations,
@@ -63,19 +51,7 @@ describe('Given a Yatzy game', () => {
         diceCombinations,
       );
 
-      const testSecond = (
-        diceOne: Dice,
-        diceTwo: Dice,
-        diceThree: Dice,
-        diceFour: Dice,
-        diceFive: Dice,
-      ) => {
-        const test = new Yatzy(diceOne, diceTwo, diceThree, diceFour, diceFive);
-
-        return test.fives();
-      };
-
-      expect(testSecond).toVerifyAllCombinations(
+      expect(Yatzy.fives).toVerifyAllCombinations(
         diceCombinations,
         diceCombinations,
         diceCombinations,
@@ -83,19 +59,7 @@ describe('Given a Yatzy game', () => {
         diceCombinations,
       );
 
-      const testThird = (
-        diceOne: Dice,
-        diceTwo: Dice,
-        diceThree: Dice,
-        diceFour: Dice,
-        diceFive: Dice,
-      ) => {
-        const test = new Yatzy(diceOne, diceTwo, diceThree, diceFour, diceFive);
-
-        return test.sixes();
-      };
-
-      expect(testThird).toVerifyAllCombinations(
+      expect(Yatzy.sixes).toVerifyAllCombinations(
         diceCombinations,
         diceCombinations,
         diceCombinations,

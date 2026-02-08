@@ -1,12 +1,6 @@
 export type Dice = 1 | 2 | 3 | 4 | 5 | 6;
 
 export class Yatzy {
-  private dice: [Dice, Dice, Dice, Dice, Dice];
-
-  constructor(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice) {
-    this.dice = [d1, d2, d3, d4, d5];
-  }
-
   static noCategory(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
     return d1 + d2 + d3 + d4 + d5;
   }
@@ -16,14 +10,18 @@ export class Yatzy {
     const NO_YATZY_SCORE = 0;
     const NUMBER_OF_DICES = 5;
 
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0];
+    const counts = [0, 0, 0, 0, 0, 0, 0, 0];
 
-    for (var currentDicePosition = 0; currentDicePosition != dices.length; currentDicePosition++) {
-      var dice = dices[currentDicePosition];
+    for (let currentDicePosition = 0; currentDicePosition != dices.length; currentDicePosition++) {
+      const dice = dices[currentDicePosition];
       counts[dice - 1]++;
     }
 
-    for (currentDicePosition = 0; currentDicePosition <= NUMBER_OF_DICES; currentDicePosition++) {
+    for (
+      let currentDicePosition = 0;
+      currentDicePosition <= NUMBER_OF_DICES;
+      currentDicePosition++
+    ) {
       if (counts[currentDicePosition] == 5) {
         return YATZY_SCORE;
       }
@@ -60,7 +58,7 @@ export class Yatzy {
   }
 
   static score_pair(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
-    let counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    const counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     counts[d1 - 1]++;
     counts[d2 - 1]++;
@@ -78,7 +76,7 @@ export class Yatzy {
   }
 
   static two_pair(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
-    let counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    const counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     counts[d1 - 1]++;
     counts[d2 - 1]++;
@@ -104,9 +102,8 @@ export class Yatzy {
   }
 
   static four_of_a_kind(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
-    let tallies;
+    const tallies = [0, 0, 0, 0, 0, 0, 0, 0];
 
-    tallies = [0, 0, 0, 0, 0, 0, 0, 0];
     tallies[d1 - 1]++;
     tallies[d2 - 1]++;
     tallies[d3 - 1]++;
@@ -123,9 +120,7 @@ export class Yatzy {
   }
 
   static three_of_a_kind(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
-    var t;
-
-    t = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    const t = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     t[d1 - 1]++;
     t[d2 - 1]++;
@@ -143,9 +138,8 @@ export class Yatzy {
   }
 
   static smallStraight(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
-    let tallies;
+    const tallies = [0, 0, 0, 0, 0, 0, 0];
 
-    tallies = [0, 0, 0, 0, 0, 0, 0];
     tallies[d1 - 1] += 1;
     tallies[d2 - 1] += 1;
     tallies[d3 - 1] += 1;
@@ -166,9 +160,7 @@ export class Yatzy {
   }
 
   static largeStraight(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
-    let tallies;
-
-    tallies = [0, 0, 0, 0, 0, 0, 0, 0];
+    const tallies = [0, 0, 0, 0, 0, 0, 0, 0];
 
     tallies[d1 - 1] += 1;
     tallies[d2 - 1] += 1;
@@ -190,14 +182,12 @@ export class Yatzy {
   }
 
   static fullHouse(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
-    let tallies;
+    let tallies = [0, 0, 0, 0, 0, 0, 0, 0];
     let _2 = false;
     let i;
     let _2_at = 0;
     let _3 = false;
     let _3_at = 0;
-
-    tallies = [0, 0, 0, 0, 0, 0, 0, 0];
 
     tallies[d1 - 1] += 1;
     tallies[d2 - 1] += 1;
@@ -225,21 +215,30 @@ export class Yatzy {
     }
   }
 
-  fours(): number {
+  static fours(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
     const DICE_FOUR_VALUE = 4;
 
-    return this.dice.reduce((sum, die) => sum + (die === DICE_FOUR_VALUE ? DICE_FOUR_VALUE : 0), 0);
+    return [d1, d2, d3, d4, d5].reduce(
+      (sum, die) => sum + (die === DICE_FOUR_VALUE ? DICE_FOUR_VALUE : 0),
+      0,
+    );
   }
 
-  fives(): number {
+  static fives(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
     const DICE_FIVE_VALUE = 5;
 
-    return this.dice.reduce((sum, die) => sum + (die === DICE_FIVE_VALUE ? DICE_FIVE_VALUE : 0), 0);
+    return [d1, d2, d3, d4, d5].reduce(
+      (sum, die) => sum + (die === DICE_FIVE_VALUE ? DICE_FIVE_VALUE : 0),
+      0,
+    );
   }
 
-  sixes(): number {
+  static sixes(d1: Dice, d2: Dice, d3: Dice, d4: Dice, d5: Dice): number {
     const DICE_SIX_VALUE = 6;
 
-    return this.dice.reduce((sum, die) => sum + (die === DICE_SIX_VALUE ? DICE_SIX_VALUE : 0), 0);
+    return [d1, d2, d3, d4, d5].reduce(
+      (sum, die) => sum + (die === DICE_SIX_VALUE ? DICE_SIX_VALUE : 0),
+      0,
+    );
   }
 }
