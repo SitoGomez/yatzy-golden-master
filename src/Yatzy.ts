@@ -219,7 +219,7 @@ export class Yatzy {
     const DICE_FOUR_VALUE = 4;
 
     return [d1, d2, d3, d4, d5].reduce(
-      (sum, die) => sum + (die === DICE_FOUR_VALUE ? DICE_FOUR_VALUE : 0),
+      (sum, dice) => sum + (dice === DICE_FOUR_VALUE ? DICE_FOUR_VALUE : 0),
       0,
     );
   }
@@ -228,7 +228,7 @@ export class Yatzy {
     const DICE_FIVE_VALUE = 5;
 
     return [d1, d2, d3, d4, d5].reduce(
-      (sum, die) => sum + (die === DICE_FIVE_VALUE ? DICE_FIVE_VALUE : 0),
+      (sum, dice) => sum + (dice === DICE_FIVE_VALUE ? DICE_FIVE_VALUE : 0),
       0,
     );
   }
@@ -237,7 +237,7 @@ export class Yatzy {
     const DICE_SIX_VALUE = 6;
 
     return [d1, d2, d3, d4, d5].reduce(
-      (sum, die) => sum + (die === DICE_SIX_VALUE ? DICE_SIX_VALUE : 0),
+      (sum, dice) => sum + (dice === DICE_SIX_VALUE ? DICE_SIX_VALUE : 0),
       0,
     );
   }
